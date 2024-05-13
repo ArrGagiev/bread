@@ -22,7 +22,7 @@ class BottomNavBar extends StatelessWidget {
           screen: const MainPage(),
           item: ItemConfig(
             icon: SvgPicture.asset('assets/icons/bottom/main_orange.svg', width: 20),
-            // inactiveIcon: SvgPicture.asset('assets/icons/bottom/main_brown.svg', width: 20),
+            inactiveIcon: SvgPicture.asset('assets/icons/bottom/main_brown.svg', width: 20),
             activeForegroundColor: AppColors.orange,
             inactiveForegroundColor: AppColors.brown,
             title: "Галавная",

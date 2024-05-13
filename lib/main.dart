@@ -14,14 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: false,
-        //todo: AppColors.black - темная тема
-        scaffoldBackgroundColor: AppColors.white,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-        ),
-      ),
+      theme: lightTheme,
       home: const MyHomePage(),
     );
   }
@@ -41,3 +34,30 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+final ThemeData lightTheme = ThemeData(
+  useMaterial3: false,
+  scaffoldBackgroundColor: AppColors.white,
+  // elevatedButtonTheme: appElevatedButtonTheme,
+);
+
+final ElevatedButtonThemeData appElevatedButtonTheme = ElevatedButtonThemeData(
+  style: ButtonStyle(
+    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.pressed)) {
+          return AppColors.orangeDark;
+        }
+        return AppColors.orange;
+      },
+    ),
+    foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.pressed)) {
+          return AppColors.white;
+        }
+        return AppColors.white;
+      },
+    ),
+  ),
+);

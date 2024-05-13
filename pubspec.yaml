@@ -35,6 +35,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.10+1
   persistent_bottom_nav_bar_v2: ^5.2.3
+  dotted_border: ^2.1.0
   # ============================= #
 
 dev_dependencies:
