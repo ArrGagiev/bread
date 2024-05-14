@@ -25,7 +25,9 @@ class DottedButton extends StatelessWidget {
       margin: margin,
       child: DottedBorder(
         color: onPressed == null ? AppColors.gray : AppColors.orange,
-        strokeWidth: 2,
+        strokeWidth: 1.2,
+        // настройка пунктирной обводки
+        dashPattern: const [3, 4],
         padding: EdgeInsets.zero,
         borderType: BorderType.RRect,
         radius: const Radius.circular(16),
@@ -44,34 +46,18 @@ class DottedButton extends StatelessWidget {
             // задал цвет кнопки при разных сценариях
             backgroundColor: MaterialStateProperty.resolveWith<Color?>(
               (Set<MaterialState> states) {
-                //// если кнопка нажата (сплошной цвет)
-                //// if (states.contains(MaterialState.pressed)) {
-                ////   return AppColors.orangeDark;
-                //// }
                 // если кнопка неактивна
                 if (states.contains(MaterialState.disabled)) {
-                  return AppColors.white;
+                  return Colors.transparent;
                 }
                 // цвет активной кнопки
-                return AppColors.white;
+                return Colors.transparent;
               },
             ),
-            //// side: MaterialStateProperty.resolveWith<BorderSide?>(
-            ////   (Set<MaterialState> states) {
-            ////     if (states.contains(MaterialState.disabled)) {
-            ////       return const BorderSide(
-            ////           color: AppColors.gray, style: BorderStyle.solid);
-            ////     } else {
-            ////       return const BorderSide(color: AppColors.orange);
-            ////     }
-            ////   },
-            //// ),
             // задал прозрачность нажатия (((сплеша)))
             overlayColor: MaterialStateProperty.resolveWith<Color?>(
               (Set<MaterialState> states) =>
-                  states.contains(MaterialState.pressed)
-                      ? AppColors.orange.withOpacity(0.2)
-                      : null,
+                  states.contains(MaterialState.pressed) ? AppColors.orange.withOpacity(0.2) : null,
             ),
             // настроил статичную тень кнопки
             elevation: MaterialStateProperty.all(0),

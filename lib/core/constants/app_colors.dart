@@ -15,11 +15,11 @@ class AppColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color green = Color(0xFF6FCF97);
   //todo: additional colors
-  // static const Color darkTheme = Color(0xFF40444F); // или это darkGray = Color(0xFF4F4F4F);
-  // static const Color darkTheme2 = Color(0xFF292C33); // или это black = Color(0xFF2D2E33);
+  static const Color darkCardColor = Color(0xFF40444F); // или это darkGray = Color(0xFF4F4F4F);
   static const Color deepOrange = Color(0xFFC15413); // хит продаж
-  static const Color darkHeader =
-      Color(0xFF303030); // категории заголовки картинок
+  static const Color darkHeader = Color(0xFF303030); // категории заголовки картинок
   static const Color darkThemeBottom = Color(0xFF423F3E);
-  static const Color darkThemeBottomShadow = Color(0xFF362121);
+  static const Color darkBottomShadow = Color(0xFF362121);
+  static const Color darkProductCardColor = Color(0xFF343841);
+  static const Color lightGray = Color(0xFFF0F0F0); //appbar text field
 }

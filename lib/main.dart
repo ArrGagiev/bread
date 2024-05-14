@@ -9,55 +9,50 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  //todo: root
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      home: const MyHomePage(),
+      theme: lightTheme, //todo: app theme <---
+      home: const Scaffold(
+        // отключает поднятие bottom_bar вверх, при открытии клавиатуры
+        resizeToAvoidBottomInset: false,
+        // body: ,
+        body: BottomNavBar(),
+      ),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      //todo: отключает поднятие bottom_bar вверх,
-      //todo: при открытии клавиатуры
-      resizeToAvoidBottomInset: false,
-      // body: ,
-      body: BottomNavBar(),
-    );
-  }
-}
-
+//? light theme
 final ThemeData lightTheme = ThemeData(
+  appBarTheme: const AppBarTheme(
+    backgroundColor: AppColors.white,
+    iconTheme: IconThemeData(color: AppColors.black),
+  ),
   useMaterial3: false,
   scaffoldBackgroundColor: AppColors.white,
-  // elevatedButtonTheme: appElevatedButtonTheme,
+  // cardColor: AppColors.white,
+  cardTheme: const CardTheme(
+    elevation: 5,
+    color: AppColors.white,
+    shadowColor: AppColors.gray,
+  ),
+  focusColor: AppColors.beige,
 );
 
-final ElevatedButtonThemeData appElevatedButtonTheme = ElevatedButtonThemeData(
-  style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) {
-          return AppColors.orangeDark;
-        }
-        return AppColors.orange;
-      },
-    ),
-    foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) {
-          return AppColors.white;
-        }
-        return AppColors.white;
-      },
-    ),
+//! dark theme
+final ThemeData darkTheme = ThemeData(
+  appBarTheme: const AppBarTheme(
+    backgroundColor: AppColors.black,
+    iconTheme: IconThemeData(color: AppColors.orange),
   ),
+  useMaterial3: false,
+  scaffoldBackgroundColor: AppColors.black,
+  //todo: тема темной карточки продукта
+  cardTheme: const CardTheme(
+    color: AppColors.darkCardColor, //! darkProductCardColor
+    shadowColor: Colors.transparent,
+  ),
+  focusColor: AppColors.darkCardColor,
 );

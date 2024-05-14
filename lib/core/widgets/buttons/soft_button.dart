@@ -37,16 +37,12 @@ class SoftButton extends StatelessWidget {
           // задал цвет кнопки при разных сценариях
           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
             (Set<MaterialState> states) {
-              //// если кнопка нажата (сплошной цвет)
-              //// if (states.contains(MaterialState.pressed)) {
-              ////   return AppColors.orangeDark;
-              //// }
               // если кнопка неактивна
               if (states.contains(MaterialState.disabled)) {
-                return AppColors.white;
+                return Colors.transparent;
               }
               // цвет активной кнопки
-              return AppColors.white;
+              return Colors.transparent;
             },
           ),
           side: MaterialStateProperty.resolveWith<BorderSide?>(
@@ -61,9 +57,7 @@ class SoftButton extends StatelessWidget {
           // задал прозрачность нажатия (((сплеша)))
           overlayColor: MaterialStateProperty.resolveWith<Color?>(
             (Set<MaterialState> states) =>
-                states.contains(MaterialState.pressed)
-                    ? AppColors.orange.withOpacity(0.2)
-                    : null,
+                states.contains(MaterialState.pressed) ? AppColors.orange.withOpacity(0.2) : null,
           ),
           // настроил статичную тень кнопки
           elevation: MaterialStateProperty.all(0),
