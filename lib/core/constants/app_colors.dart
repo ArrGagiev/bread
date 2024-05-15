@@ -16,7 +16,7 @@ class AppColors {
   static const Color green = Color(0xFF6FCF97);
   //todo: additional colors
   static const Color darkCardColor = Color(0xFF40444F); // или это darkGray = Color(0xFF4F4F4F);
-  static const Color deepOrange = Color(0xFFC15413); // хит продаж
+  static const Color deepOrange = Color(0xFFFF6D2F); // хит продаж
   static const Color darkHeader = Color(0xFF303030); // категории заголовки картинок
   static const Color darkThemeBottom = Color(0xFF423F3E);
   static const Color darkBottomShadow = Color(0xFF362121);

@@ -1,8 +1,8 @@
+import 'package:bread/core/widgets/cards/product_card/widgets/area/quantity_selection_area.dart';
+import 'package:bread/core/widgets/cards/product_card/widgets/area/price_addbasket_area.dart';
+import 'package:bread/core/widgets/cards/product_card/widgets/area/no_product_area.dart';
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/constants/app_colors.dart';
-import 'package:bread/core/widgets/cards/product_card/widgets/area/no_product_area.dart';
-import 'package:bread/core/widgets/cards/product_card/widgets/area/price_addbasket_area.dart';
-import 'package:bread/core/widgets/cards/product_card/widgets/area/quantity_selection_area.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -11,6 +11,7 @@ class ProductCard extends StatelessWidget {
   final String image = 'assets/images/bread.png';
   final String description = 'Хлеб «Ароматный» с кориандром (часть изделия)';
   final String quantity = '300 гр';
+  final bool isHitOfSales = true;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class ProductCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //--------------------------------------------------------------------- image
               Container(
                 height: 100,
                 margin: const EdgeInsets.all(4),
@@ -47,9 +49,34 @@ class ProductCard extends StatelessWidget {
                         color: AppColors.brown.withOpacity(0.5),
                       ),
                     ),
+                    Visibility(
+                      visible: isHitOfSales, //todo: hit of sales visible <---
+                      child: Positioned(
+                        bottom: 8,
+                        left: 11,
+                        child: Container(
+                          width: 76,
+                          height: 12,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            color: AppColors.deepOrange,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'ХИТ ПРОДАЖ',
+                              style: AppTypography.bodyXSmall.copyWith(
+                                color: AppColors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
+              //--------------------------------------------------------------------- description
               const SizedBox(height: 7),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -71,6 +98,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               const Spacer(),
+              //--------------------------------------------------------------------- area
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 child: const Stack(
