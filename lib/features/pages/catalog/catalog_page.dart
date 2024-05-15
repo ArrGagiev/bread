@@ -47,7 +47,14 @@ class CatalogPage extends StatelessWidget {
             ],
           ),
           //!--------------------------------------------------
-          const SliverToBoxAdapter(child: Text('CatalogPage')),
+          SliverToBoxAdapter(
+            child: Center(
+              child: Text(
+                'CatalogPage',
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+            ),
+          ),
           SliverToBoxAdapter(
             child: PrimaryButton(
               title: 'OrangeButton',

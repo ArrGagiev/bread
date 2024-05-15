@@ -57,7 +57,7 @@ class ProductCard extends StatelessWidget {
                   description, //todo: description <---
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: AppTypography.h7,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
               const SizedBox(height: 4),

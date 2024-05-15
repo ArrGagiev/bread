@@ -19,7 +19,7 @@ class PriceAddBasketArea extends StatelessWidget {
             children: [
               TextSpan(
                 text: price ?? '',
-                style: AppTypography.h5.copyWith(color: AppColors.black),
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               TextSpan(
                 text: ' ${text ?? ''}',
