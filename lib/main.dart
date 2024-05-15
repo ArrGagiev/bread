@@ -51,7 +51,7 @@ final ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.black,
   //todo: тема темной карточки продукта
   cardTheme: const CardTheme(
-    color: AppColors.darkCardColor, //! darkProductCardColor
+    color: AppColors.darkProductCardColor,
     shadowColor: Colors.transparent,
   ),
   focusColor: AppColors.darkCardColor,

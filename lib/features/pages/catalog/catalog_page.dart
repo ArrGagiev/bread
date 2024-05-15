@@ -2,9 +2,8 @@ import 'package:bread/core/constants/app_colors.dart';
 import 'package:bread/core/widgets/buttons/dotted_button.dart';
 import 'package:bread/core/widgets/buttons/primary_button.dart';
 import 'package:bread/core/widgets/buttons/soft_button.dart';
-import 'package:bread/core/widgets/cards/product_card.dart';
+import 'package:bread/core/widgets/cards/product_card/product_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CatalogPage extends StatelessWidget {
   const CatalogPage({super.key});

@@ -37,10 +37,6 @@ class PrimaryButton extends StatelessWidget {
           // задал цвет кнопки при разных сценариях
           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
             (Set<MaterialState> states) {
-              //// если кнопка нажата (сплошной цвет)
-              //// if (states.contains(MaterialState.pressed)) {
-              ////   return AppColors.orangeDark;
-              //// }
               // если кнопка неактивна
               if (states.contains(MaterialState.disabled)) {
                 return AppColors.disabled;
@@ -52,9 +48,7 @@ class PrimaryButton extends StatelessWidget {
           // задал прозрачность нажатия (((сплеша)))
           overlayColor: MaterialStateProperty.resolveWith<Color?>(
             (Set<MaterialState> states) =>
-                states.contains(MaterialState.pressed)
-                    ? AppColors.orangeDark
-                    : null,
+                states.contains(MaterialState.pressed) ? AppColors.orangeDark : null,
           ),
           // настроил статичную тень кнопки
           elevation: MaterialStateProperty.all(5),
