@@ -10,7 +10,7 @@ class ProductCard extends StatelessWidget {
 
   final String image = 'assets/images/bread.png';
   final String description = 'Хлеб «Ароматный» с кориандром (часть изделия)';
-  final String quantity = '300 гр';
+  final String weight = '300 гр';
   final bool isHitOfSales = true;
 
   @override
@@ -91,7 +91,7 @@ class ProductCard extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
-                  quantity, //todo: quantity <---
+                  weight, //todo: weight(вес) <---
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppTypography.bodyXSmall.copyWith(color: AppColors.gray),

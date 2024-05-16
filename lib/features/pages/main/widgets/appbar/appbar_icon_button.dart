@@ -1,10 +1,11 @@
 import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
-class SelectionIconButton extends StatelessWidget {
-  const SelectionIconButton({super.key, this.icon, this.onPressed});
+class AppBarIconButton extends StatelessWidget {
+  const AppBarIconButton({super.key, required this.icon, this.onPressed});
 
-  final IconData? icon;
+  final String icon;
   final void Function()? onPressed;
 
   @override
@@ -18,9 +19,15 @@ class SelectionIconButton extends StatelessWidget {
           focusElevation: 0,
           highlightElevation: 0,
           backgroundColor: Colors.transparent,
-          splashColor: AppColors.orange,
+          splashColor: AppColors.orangeDark.withOpacity(0.2),
           onPressed: onPressed,
-          child: Icon(icon, color: AppColors.gray),
+          child: SvgPicture.asset(
+            icon,
+            colorFilter: ColorFilter.mode(
+              Theme.of(context).appBarTheme.iconTheme!.color!, //! iconTheme.color <---
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ),
     );

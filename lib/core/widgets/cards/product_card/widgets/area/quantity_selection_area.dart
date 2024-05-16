@@ -24,11 +24,11 @@ class QuantitySelectionArea extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SelectionBittonIcon(
+                  SelectionIconButton(
                     icon: Icons.add,
                     onPressed: () {},
                   ),
-                  SelectionBittonIcon(
+                  SelectionIconButton(
                     icon: Icons.remove,
                     onPressed: () {},
                   ),

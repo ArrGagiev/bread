@@ -1,9 +1,10 @@
-import 'package:bread/core/constants/app_colors.dart';
-import 'package:bread/core/widgets/buttons/dotted_button.dart';
-import 'package:bread/core/widgets/buttons/primary_button.dart';
-import 'package:bread/core/widgets/buttons/soft_button.dart';
 import 'package:bread/core/widgets/cards/product_card/product_card.dart';
+import 'package:bread/core/widgets/buttons/primary_button.dart';
+import 'package:bread/core/widgets/buttons/dotted_button.dart';
+import 'package:bread/core/widgets/buttons/soft_button.dart';
+import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CatalogPage extends StatelessWidget {
   const CatalogPage({super.key});
@@ -35,11 +36,16 @@ class CatalogPage extends StatelessWidget {
                   customBorder: const CircleBorder(),
                   onTap: () {},
                   child: Container(
-                    constraints: const BoxConstraints.tightFor(width: 28, height: 28),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
+                    constraints: const BoxConstraints.tightFor(width: 40, height: 40),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+                    padding: const EdgeInsets.all(10),
+                    child: SvgPicture.asset(
+                      'assets/icons/product_card_basket.svg',
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).appBarTheme.iconTheme!.color!, //! iconTheme.color <---
+                        BlendMode.srcIn,
+                      ),
                     ),
-                    child: const Icon(Icons.share),
                   ),
                 ),
               ),

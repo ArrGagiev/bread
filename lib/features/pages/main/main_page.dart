@@ -1,3 +1,4 @@
+import 'package:bread/features/pages/main/widgets/appbar/appbar.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
@@ -6,7 +7,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: const MainAppBar(isAuthUser: true),
       body: Center(
         child: ListView.separated(
           itemCount: 10,
