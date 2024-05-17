@@ -6,16 +6,23 @@ class AppBarSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 40,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
-        color: AppColors.lightGray,
-      ),
-      child: const TextField(
+      child: TextField(
+        onTapOutside: (PointerDownEvent event) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        cursorColor: AppColors.orange,
+        cursorRadius: const Radius.circular(10),
+        cursorWidth: 2,
         decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.zero,
+          fillColor: AppColors.lightGray,
+          filled: true,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(40),
+            borderSide: BorderSide.none,
+          ),
+          contentPadding: const EdgeInsets.only(left: 20),
         ),
       ),
     );

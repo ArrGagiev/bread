@@ -1,3 +1,4 @@
+import 'package:bread/core/widgets/cards/product_card/widgets/card_buttons/favourite_button.dart';
 import 'package:bread/core/widgets/cards/product_card/widgets/area/quantity_selection_area.dart';
 import 'package:bread/core/widgets/cards/product_card/widgets/area/price_addbasket_area.dart';
 import 'package:bread/core/widgets/cards/product_card/widgets/area/no_product_area.dart';
@@ -41,13 +42,10 @@ class ProductCard extends StatelessWidget {
                     Center(
                       child: Image.asset(image, height: 70), //todo: image <---
                     ),
-                    Positioned(
+                    const Positioned(
                       top: 8,
                       right: 8,
-                      child: Icon(
-                        Icons.favorite_border, //todo: icon favorite <---
-                        color: AppColors.brown.withOpacity(0.5),
-                      ),
+                      child: FavouriteButton(), //todo: favourite button <---
                     ),
                     Visibility(
                       visible: isHitOfSales, //todo: hit of sales visible <---

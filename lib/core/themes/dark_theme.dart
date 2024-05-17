@@ -1,14 +1,28 @@
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/constants/app_colors.dart';
+import 'package:bread/core/themes/theme_extension.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData darkTheme = ThemeData(
+  useMaterial3: false,
   appBarTheme: const AppBarTheme(
     // backgroundColor аппбара
     backgroundColor: AppColors.black,
     iconTheme: IconThemeData(color: AppColors.orange),
   ),
-  useMaterial3: false,
+  //! задаю цвет кастомного боттом навбара
+  bottomAppBarTheme: BottomAppBarTheme(
+    color: AppColors.black,
+    shadowColor: AppColors.darkBottomShadow.withOpacity(0.5),
+  ),
+  //! ----------------------------------------
+  extensions: const <ThemeExtension<dynamic>>[
+    AppThemeColors(
+      activeIconColor: AppColors.orange,
+      inactiveIconColor: AppColors.white,
+    ),
+  ],
+  //! ----------------------------------------
   // backgroundColor страницы
   scaffoldBackgroundColor: AppColors.black,
   // тема product_card
@@ -16,7 +30,7 @@ final ThemeData darkTheme = ThemeData(
     color: AppColors.darkProductCardColor,
     shadowColor: Colors.transparent,
   ),
-  //тема карточки info_navigation_card
+  //* конкретно этот параметр задаю для темs карточки info_navigation_card
   focusColor: AppColors.darkCardColor,
   textTheme: TextTheme(
     // headlineLarge для заголовка разделов страницы
