@@ -1,8 +1,9 @@
-import 'package:bread/core/constants/app_colors.dart';
-import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/widgets/cards/product_card/widgets/card_buttons/selection_icon_button.dart';
+import 'package:bread/core/constants/app_typography.dart';
+import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
+//todo: область с выбором количества продукта <---
 class QuantitySelectionArea extends StatelessWidget {
   const QuantitySelectionArea({super.key});
 
@@ -25,11 +26,11 @@ class QuantitySelectionArea extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SelectionIconButton(
-                    icon: Icons.add,
+                    icon: Icons.add, //! (+)
                     onPressed: () {},
                   ),
                   SelectionIconButton(
-                    icon: Icons.remove,
+                    icon: Icons.remove, //! (-)
                     onPressed: () {},
                   ),
                 ],

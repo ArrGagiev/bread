@@ -1,6 +1,6 @@
-import 'package:bread/core/constants/app_colors.dart';
-import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/widgets/cards/product_card/widgets/card_buttons/addbasket_button.dart';
+import 'package:bread/core/constants/app_typography.dart';
+import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class PriceAddBasketArea extends StatelessWidget {

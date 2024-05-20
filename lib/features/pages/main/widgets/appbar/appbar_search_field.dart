@@ -13,8 +13,6 @@ class AppBarSearchField extends StatelessWidget {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         cursorColor: AppColors.orange,
-        cursorRadius: const Radius.circular(10),
-        cursorWidth: 2,
         decoration: InputDecoration(
           fillColor: AppColors.lightGray,
           filled: true,
@@ -22,7 +20,7 @@ class AppBarSearchField extends StatelessWidget {
             borderRadius: BorderRadius.circular(40),
             borderSide: BorderSide.none,
           ),
-          contentPadding: const EdgeInsets.only(left: 20),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         ),
       ),
     );

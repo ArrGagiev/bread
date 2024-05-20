@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 final ThemeData lightTheme = ThemeData(
   useMaterial3: false,
+  primarySwatch: Colors.orange,
   appBarTheme: const AppBarTheme(
     // backgroundColor аппбара
     backgroundColor: AppColors.white,
@@ -15,14 +16,14 @@ final ThemeData lightTheme = ThemeData(
     color: AppColors.white,
     shadowColor: AppColors.gray.withOpacity(0.1),
   ),
-  //! ----------------------------------------
+  //! ---------------------------------------- extensions
   extensions: const <ThemeExtension<dynamic>>[
     AppThemeColors(
       activeIconColor: AppColors.orange,
       inactiveIconColor: AppColors.brown,
     ),
   ],
-  //! ----------------------------------------
+  //! ---------------------------------------------------
   //backgroundColor страницы
   scaffoldBackgroundColor: AppColors.white,
   // тема product_card
