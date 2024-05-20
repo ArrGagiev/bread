@@ -1,31 +1,42 @@
 import 'package:flutter/material.dart';
 
-class AppThemeColors extends ThemeExtension<AppThemeColors> {
-  final Color activeIconColor; //todo: bottom_nav_bar
-  final Color inactiveIconColor; //todo: bottom_nav_bar
+class BottomNavBarTheme extends ThemeExtension<BottomNavBarTheme> {
+  final Color backgroundColor;
+  final Color shadowColor;
+  final Color activeIconColor;
+  final Color inactiveIconColor;
 
-  const AppThemeColors({
+  const BottomNavBarTheme({
+    required this.backgroundColor,
+    required this.shadowColor,
     required this.activeIconColor,
     required this.inactiveIconColor,
   });
 
   @override
-  ThemeExtension<AppThemeColors> copyWith({
+  ThemeExtension<BottomNavBarTheme> copyWith({
+    Color? backgroundColor,
+    Color? shadowColor,
     Color? activeIconColor,
     Color? inactiveIconColor,
   }) {
-    return AppThemeColors(
+    return BottomNavBarTheme(
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      shadowColor: shadowColor ?? this.shadowColor,
       activeIconColor: activeIconColor ?? this.activeIconColor,
       inactiveIconColor: inactiveIconColor ?? this.inactiveIconColor,
     );
   }
 
   @override
-  ThemeExtension<AppThemeColors> lerp(covariant ThemeExtension<AppThemeColors>? other, double t) {
-    if (other is! AppThemeColors) {
+  ThemeExtension<BottomNavBarTheme> lerp(
+      covariant ThemeExtension<BottomNavBarTheme>? other, double t) {
+    if (other is! BottomNavBarTheme) {
       return this;
     }
-    return AppThemeColors(
+    return BottomNavBarTheme(
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
+      shadowColor: Color.lerp(shadowColor, other.shadowColor, t)!,
       activeIconColor: Color.lerp(activeIconColor, other.activeIconColor, t)!,
       inactiveIconColor: Color.lerp(inactiveIconColor, other.inactiveIconColor, t)!,
     );
@@ -33,5 +44,5 @@ class AppThemeColors extends ThemeExtension<AppThemeColors> {
 }
 
 extension BuildContextExt on BuildContext {
-  AppThemeColors get themeColors => Theme.of(this).extension<AppThemeColors>()!;
+  BottomNavBarTheme get bottomNavBarTheme => Theme.of(this).extension<BottomNavBarTheme>()!;
 }

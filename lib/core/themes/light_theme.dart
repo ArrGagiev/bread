@@ -6,40 +6,46 @@ import 'package:flutter/material.dart';
 final ThemeData lightTheme = ThemeData(
   useMaterial3: false,
   primarySwatch: Colors.orange,
-  appBarTheme: const AppBarTheme(
-    // backgroundColor аппбара
-    backgroundColor: AppColors.white,
-    iconTheme: IconThemeData(color: AppColors.black),
-  ),
-  //! задаю цвет кастомного боттом навбара
-  bottomAppBarTheme: BottomAppBarTheme(
-    color: AppColors.white,
-    shadowColor: AppColors.gray.withOpacity(0.1),
-  ),
-  //! ---------------------------------------- extensions
-  extensions: const <ThemeExtension<dynamic>>[
-    AppThemeColors(
-      activeIconColor: AppColors.orange,
-      inactiveIconColor: AppColors.brown,
-    ),
-  ],
-  //! ---------------------------------------------------
-  //backgroundColor страницы
+  appBarTheme: appBarTheme(),
   scaffoldBackgroundColor: AppColors.white,
-  // тема product_card
-  cardTheme: const CardTheme(
+  cardTheme: lightProductCardTheme(),
+  //* конкретно этот параметр задаю для темs карточки info_navigation_card
+  focusColor: AppColors.beige,
+  textTheme: lightTextTheme(),
+  extensions: <ThemeExtension<dynamic>>[
+    lightNavBarTheme, //todo: цвета кастомного навбара
+  ],
+);
+
+CardTheme lightProductCardTheme() {
+  return const CardTheme(
     elevation: 5,
     color: AppColors.white,
     shadowColor: AppColors.gray,
-  ),
-  //* конкретно этот параметр задаю для темs карточки info_navigation_card
-  focusColor: AppColors.beige,
-  textTheme: TextTheme(
+  );
+}
+
+AppBarTheme appBarTheme() {
+  return const AppBarTheme(
+    backgroundColor: AppColors.white,
+    iconTheme: IconThemeData(color: AppColors.black),
+  );
+}
+
+BottomNavBarTheme lightNavBarTheme = BottomNavBarTheme(
+  backgroundColor: AppColors.white,
+  shadowColor: AppColors.gray.withOpacity(0.1),
+  activeIconColor: AppColors.orange,
+  inactiveIconColor: AppColors.brown,
+);
+
+TextTheme lightTextTheme() {
+  return TextTheme(
     // headlineLarge для заголовка разделов страницы
     headlineLarge: AppTypography.h3.copyWith(color: AppColors.brown),
     // headlineMedium для описания карточки продукта
     headlineMedium: AppTypography.h7.copyWith(color: AppColors.black),
     // headlineSmall для цены карточки продукта
     headlineSmall: AppTypography.h5.copyWith(color: AppColors.black),
-  ),
-);
+  );
+}

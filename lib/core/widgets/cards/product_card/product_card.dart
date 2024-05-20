@@ -31,7 +31,7 @@ class ProductCard extends StatelessWidget {
               ProductCardDescription(description: description, weight: weight),
               const Spacer(),
               //--------------------------------------------------------------------- area
-              const ProductCardStateArea(),
+              const ProductCardStateArea(), //todo: работу с корзиной обернуть в bloc корзины!
               const SizedBox(height: 8),
             ],
           ),

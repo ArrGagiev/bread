@@ -28,10 +28,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
       navBarBuilder: (navBarConfig) => Style1BottomNavBar(
         navBarConfig: navBarConfig,
         navBarDecoration: NavBarDecoration(
-          color: Theme.of(context).bottomAppBarTheme.color!,
+          color: context.bottomNavBarTheme.backgroundColor,
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).bottomAppBarTheme.shadowColor!,
+              color: context.bottomNavBarTheme.shadowColor,
               blurRadius: 7,
               offset: const Offset(0, -3),
             )
@@ -96,13 +96,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
           width: 20,
           colorFilter: ColorFilter.mode(
             currentTab == index
-                ? context.themeColors.activeIconColor
-                : context.themeColors.inactiveIconColor,
+                ? context.bottomNavBarTheme.activeIconColor
+                : context.bottomNavBarTheme.inactiveIconColor,
             BlendMode.srcIn,
           ),
         ),
-        activeForegroundColor: context.themeColors.activeIconColor,
-        inactiveForegroundColor: context.themeColors.inactiveIconColor,
+        activeForegroundColor: context.bottomNavBarTheme.activeIconColor,
+        inactiveForegroundColor: context.bottomNavBarTheme.inactiveIconColor,
         title: title,
         textStyle: AppTypography.bodySmall,
       ),
