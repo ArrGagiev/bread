@@ -46,5 +46,7 @@ TextTheme darkTextTheme() {
     headlineMedium: AppTypography.h7.copyWith(color: AppColors.white),
     // headlineSmall для цены карточки продукта
     headlineSmall: AppTypography.h5.copyWith(color: AppColors.white),
+    // bodyLarge для описания info_navigation карточки
+    bodySmall: AppTypography.bodySmall.copyWith(color: AppColors.white),
   );
 }
