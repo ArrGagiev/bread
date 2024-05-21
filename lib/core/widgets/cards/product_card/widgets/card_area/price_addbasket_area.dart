@@ -1,4 +1,5 @@
 import 'package:bread/core/widgets/cards/product_card/widgets/card_buttons/addbasket_button.dart';
+import 'package:bread/core/themes/extentions/product_card_theme.dart';
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class PriceAddBasketArea extends StatelessWidget {
             children: [
               TextSpan(
                 text: price ?? '',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: context.productCardTheme.priceTextStyle,
               ),
               TextSpan(
                 text: ' ${text ?? ''}',

@@ -1,3 +1,4 @@
+import 'package:bread/core/themes/extentions/product_card_theme.dart';
 import 'package:bread/core/widgets/cards/product_card/widgets/card_basic/card_state_area.dart';
 import 'package:bread/core/widgets/cards/product_card/widgets/card_basic/card_image.dart';
 import 'widgets/card_basic/card_description.dart';
@@ -18,6 +19,9 @@ class ProductCard extends StatelessWidget {
         width: 156,
         height: 235,
         child: Card(
+          elevation: 5,
+          color: context.productCardTheme.backgroundColor,
+          shadowColor: context.productCardTheme.shadowColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),

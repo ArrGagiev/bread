@@ -1,5 +1,6 @@
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/constants/app_colors.dart';
+import 'package:bread/core/themes/extentions/product_card_theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductCardDescription extends StatelessWidget {
@@ -23,7 +24,7 @@ class ProductCardDescription extends StatelessWidget {
             description, //todo: description <---
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: context.productCardTheme.descriptionTextStyle,
           ),
           const SizedBox(height: 4),
           Text(

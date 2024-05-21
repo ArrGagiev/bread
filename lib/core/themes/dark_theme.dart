@@ -1,6 +1,8 @@
+import 'package:bread/core/themes/extentions/info_navigation_card_theme.dart';
+import 'package:bread/core/themes/extentions/bottom_navbar_theme.dart';
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/constants/app_colors.dart';
-import 'package:bread/core/themes/theme_extension.dart';
+import 'package:bread/core/themes/extentions/product_card_theme.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData darkTheme = ThemeData(
@@ -8,12 +10,11 @@ final ThemeData darkTheme = ThemeData(
   primarySwatch: Colors.orange,
   appBarTheme: darkAppBarTheme(),
   scaffoldBackgroundColor: AppColors.black,
-  cardTheme: darkProductCardTheme(),
-  //* конкретно этот параметр задаю для темs карточки info_navigation_card
-  focusColor: AppColors.darkCardColor,
   textTheme: darkTextTheme(),
   extensions: <ThemeExtension<dynamic>>[
-    darkNavBarTheme, //todo: цвета кастомного навбара
+    darkNavBarTheme,
+    darkInfoNavCardTheme,
+    darkProductCardTheme,
   ],
 );
 
@@ -24,12 +25,17 @@ AppBarTheme darkAppBarTheme() {
   );
 }
 
-CardTheme darkProductCardTheme() {
-  return const CardTheme(
-    color: AppColors.darkProductCardColor,
-    shadowColor: Colors.transparent,
-  );
-}
+InfoNavigationCardTheme darkInfoNavCardTheme = InfoNavigationCardTheme(
+  backgroundColor: AppColors.darkCardColor,
+  descriptionTextStyle: AppTypography.bodySmall.copyWith(color: AppColors.white),
+);
+
+ProductCardTheme darkProductCardTheme = ProductCardTheme(
+  backgroundColor: AppColors.darkProductCardColor,
+  shadowColor: Colors.transparent,
+  descriptionTextStyle: AppTypography.h7.copyWith(color: AppColors.white),
+  priceTextStyle: AppTypography.h5.copyWith(color: AppColors.white),
+);
 
 BottomNavBarTheme darkNavBarTheme = BottomNavBarTheme(
   backgroundColor: AppColors.black,
@@ -42,11 +48,5 @@ TextTheme darkTextTheme() {
   return TextTheme(
     // headlineLarge для заголовка разделов страницы
     headlineLarge: AppTypography.h3.copyWith(color: AppColors.white),
-    // headlineMedium для описания карточки продукта
-    headlineMedium: AppTypography.h7.copyWith(color: AppColors.white),
-    // headlineSmall для цены карточки продукта
-    headlineSmall: AppTypography.h5.copyWith(color: AppColors.white),
-    // bodyLarge для описания info_navigation карточки
-    bodySmall: AppTypography.bodySmall.copyWith(color: AppColors.white),
   );
 }

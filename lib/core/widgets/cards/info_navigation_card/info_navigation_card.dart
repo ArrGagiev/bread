@@ -1,4 +1,5 @@
 import 'package:bread/core/constants/app_colors.dart';
+import 'package:bread/core/themes/extentions/info_navigation_card_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -21,7 +22,7 @@ class InfoNavigationCard extends StatelessWidget {
     var splashColor = AppColors.orangeDark.withOpacity(0.2);
     return Center(
       child: Material(
-        color: Theme.of(context).focusColor,
+        color: context.infoNavCardTheme.backgroundColor,
         borderRadius: BorderRadius.circular(radius),
         child: InkWell(
           splashColor: splashColor,
@@ -43,7 +44,7 @@ class InfoNavigationCard extends StatelessWidget {
                     Text(
                       title,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: context.infoNavCardTheme.descriptionTextStyle,
                     ),
                     if (isTitleWithIcon) const SizedBox(width: 5),
                     if (isTitleWithIcon)

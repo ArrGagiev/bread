@@ -5,7 +5,7 @@ import 'package:bread/features/pages/catalog/catalog_page.dart';
 import 'package:bread/features/pages/basket/basket_page.dart';
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/features/pages/main/main_page.dart';
-import 'package:bread/core/themes/theme_extension.dart';
+import 'package:bread/core/themes/extentions/bottom_navbar_theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
