@@ -1,3 +1,6 @@
+import 'package:bread/features/pages/main/widgets/main_basic/interesting_cards.dart';
+import 'package:bread/features/pages/main/widgets/main_basic/popular_cards.dart';
+import 'package:bread/features/pages/main/widgets/main_basic/product_cards.dart';
 import 'package:bread/features/pages/main/widgets/appbar/appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -6,22 +9,17 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const MainAppBar(isAuthUser: true),
-      body: Center(
-        child: ListView.separated(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Center(
-              child: Container(
-                width: 100,
-                height: 100,
-                color: Color.fromARGB(255, index * 50, 255 - index * 25, 0),
-              ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10),
-        ),
+    return const Scaffold(
+      appBar: MainAppBar(isAuthUser: true),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(child: InteretingCards()),
+          SliverToBoxAdapter(child: SizedBox(height: 28)),
+          SliverToBoxAdapter(child: ProductCards()),
+          SliverToBoxAdapter(child: SizedBox(height: 28)),
+          SliverToBoxAdapter(child: PopularCards()),
+          SliverToBoxAdapter(child: SizedBox(height: 88)),
+        ],
       ),
     );
   }

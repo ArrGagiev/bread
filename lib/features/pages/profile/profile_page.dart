@@ -5,18 +5,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Column(
-        children: [
-          Text('ProfilePage'),
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Enter your name',
-            ),
-          ),
-          Text('ProfilePage'),
-        ],
-      ),
-    );
+    return const Center(child: Text('ProfilePage'));
   }
 }

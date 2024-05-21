@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color brown = Color(0xFF6E3800);
-  static const Color beige = Color(0xFFF4F1EC); //бежевый
+  static const Color beige = Color(0xFFF4F1EC);
   static const Color orange = Color(0xFFF78D20);
   static const Color orangeDark = Color(0xFFDC7E1D);
   static const Color red = Color(0xFFE15031);
@@ -21,5 +21,5 @@ class AppColors {
   static const Color darkThemeBottom = Color(0xFF423F3E);
   static const Color darkBottomShadow = Color(0xFF362121);
   static const Color darkProductCardColor = Color(0xFF343841);
-  static const Color lightGray = Color(0xFFF0F0F0); //appbar text field
+  static const Color lightGray = Color(0xFFF0F0F0);
 }

@@ -12,9 +12,8 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme, //todo: app theme <---
       home: const Scaffold(
-        // отключает поднятие bottom_bar вверх, при открытии клавиатуры
+        // отключает поднятие навбара вверх, при открытии клавиатуры
         resizeToAvoidBottomInset: false,
-        // body: ,
         body: BottomNavBar(),
       ),
     );
