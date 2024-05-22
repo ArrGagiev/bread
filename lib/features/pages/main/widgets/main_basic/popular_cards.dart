@@ -6,7 +6,7 @@ class PopularCards extends StatelessWidget {
 
   final double horizontalPadding = 16;
   final String title = 'Популярное';
-  final double height = 240;
+  final double height = 245;
 
   @override
   Widget build(BuildContext context) {

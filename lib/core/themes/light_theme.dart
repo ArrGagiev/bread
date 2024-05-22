@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 final ThemeData lightTheme = ThemeData(
   useMaterial3: false,
-  primarySwatch: Colors.orange,
   appBarTheme: appBarTheme(),
   scaffoldBackgroundColor: AppColors.white,
   textTheme: lightTextTheme(),

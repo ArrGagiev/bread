@@ -6,7 +6,7 @@ class ProductCards extends StatelessWidget {
 
   final double horizontalPadding = 16;
   final String title = 'Хиты продаж';
-  final double height = 240;
+  final double height = 245;
 
   @override
   Widget build(BuildContext context) {
