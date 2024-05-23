@@ -1,7 +1,7 @@
-import 'package:bread/features/pages/main/widgets/main_basic/interesting_cards.dart';
-import 'package:bread/features/pages/main/widgets/main_basic/popular_cards.dart';
-import 'package:bread/features/pages/main/widgets/main_basic/product_cards.dart';
-import 'package:bread/features/pages/main/widgets/appbar/appbar.dart';
+import 'package:bread/presentation/pages/main/widgets/main_basic/interesting_cards.dart';
+import 'package:bread/presentation/pages/main/widgets/main_basic/popular_cards.dart';
+import 'package:bread/presentation/pages/main/widgets/main_basic/product_cards.dart';
+import 'package:bread/presentation/pages/main/widgets/appbar/appbar.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {

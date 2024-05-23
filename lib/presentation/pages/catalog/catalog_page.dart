@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bread/core/widgets/buttons/primary_button.dart';
 import 'package:bread/core/widgets/text_form/text_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -63,9 +64,9 @@ class _CatalogPageState extends State<CatalogPage> {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ElevatedButton(
+              child: PrimaryButton(
+                title: 'Отправить',
                 onPressed: isValidNumber && isValidEmail ? () => log('Отправилось') : null,
-                child: const Text('Отправить'),
               ),
             ),
           ),

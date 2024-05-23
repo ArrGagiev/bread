@@ -74,8 +74,6 @@ class _AppTextFormState extends State<AppTextForm> {
           }
           break;
         default:
-          // _showErrorIcon = false; // Сбросить флаг ошибки
-          // // widget.onValidation!(_showErrorIcon); // Вызов коллбека
           return null;
       }
     }
