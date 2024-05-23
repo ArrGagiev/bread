@@ -9,26 +9,30 @@ enum ValidationType {
   min3Chars,
 }
 
-class AppTextField extends StatefulWidget {
-  const AppTextField({
+class AppTextForm extends StatefulWidget {
+  const AppTextForm({
     super.key,
     this.type,
-    required this.labelText,
     this.maxLines,
+    required this.labelText,
+    required this.controller,
+    this.onValidation,
   });
 
   final ValidationType? type;
-  final String labelText;
   final int? maxLines;
+  final String labelText;
+  final TextEditingController controller;
+  final bool Function(bool isValid)? onValidation;
 
   @override
-  State<AppTextField> createState() => _AppTextFieldState();
+  State<AppTextForm> createState() => _AppTextFormState();
 }
 
-class _AppTextFieldState extends State<AppTextField> {
+class _AppTextFormState extends State<AppTextForm> {
   final _formKey = GlobalKey<FormState>();
-  final _controller = TextEditingController();
-  bool _showErrorIcon = false; // Флаг для отображения иконки ошибки
+  bool _showErrorIcon = false; //для отображения иконки ошибки
+  bool _isValid = false; //для отображения валидации
 
   void _onSubmit() {
     _formKey.currentState!.validate();
@@ -36,7 +40,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    widget.controller.dispose();
     super.dispose();
   }
 
@@ -46,6 +50,8 @@ class _AppTextFieldState extends State<AppTextField> {
         case ValidationType.number:
           if (!RegExp(r"^\+?\d{10,13}$").hasMatch(value)) {
             _showErrorIcon = true;
+            _isValid = false;
+            widget.onValidation!(_isValid); //!
             return 'Некорректный номер телефона';
           }
           break;
@@ -54,21 +60,27 @@ class _AppTextFieldState extends State<AppTextField> {
                   r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")
               .hasMatch(value)) {
             _showErrorIcon = true;
+            _isValid = false;
+            widget.onValidation!(_isValid); //!
             return 'Некорректный email';
           }
           break;
         case ValidationType.min3Chars:
           if (value.length < 3) {
             _showErrorIcon = true;
+            _isValid = false;
+            widget.onValidation!(_isValid); //!
             return 'Введите не менее 3 символов';
           }
           break;
         default:
-          _showErrorIcon = false; // Сбросить флаг ошибки
+          // _showErrorIcon = false; // Сбросить флаг ошибки
+          // // widget.onValidation!(_showErrorIcon); // Вызов коллбека
           return null;
       }
     }
     _showErrorIcon = false; // Сбросить флаг ошибки
+    widget.onValidation!(_isValid = true); //!
     return null;
   }
 
@@ -77,7 +89,7 @@ class _AppTextFieldState extends State<AppTextField> {
     return Form(
       key: _formKey,
       child: TextFormField(
-        controller: _controller,
+        controller: widget.controller,
         maxLines: widget.maxLines,
 
         onTapOutside: (PointerDownEvent event) {
