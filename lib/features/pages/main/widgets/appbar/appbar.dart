@@ -1,5 +1,5 @@
-import 'package:bread/presentation/pages/main/widgets/appbar/appbar_search_field.dart';
-import 'package:bread/presentation/pages/main/widgets/appbar/appbar_icon_button.dart';
+import 'package:bread/features/pages/main/widgets/appbar/appbar_search_field.dart';
+import 'package:bread/features/pages/main/widgets/appbar/appbar_icon_button.dart';
 import 'package:bread/core/widgets/badge/badge.dart';
 import 'package:flutter/material.dart';
 
