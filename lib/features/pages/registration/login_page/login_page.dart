@@ -1,5 +1,5 @@
-import 'package:bread/features/pages/registration/login_page/data/repository/login_repository.dart';
-import 'package:bread/features/pages/registration/login_page/ui/bloc/login_bloc.dart';
+import 'package:bread/features/pages/registration/login_page/data/login_repository.dart';
+import 'package:bread/features/pages/registration/login_page/bloc/login_bloc.dart';
 import 'package:bread/core/widgets/text_form/text_form_field.dart';
 import 'package:bread/core/widgets/buttons/primary_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +55,6 @@ class _LoginPageState extends State<LoginPage> {
                               context
                                   .read<LoginBloc>()
                                   .add(SendingPhoneNumber(number: controllerNumber.text));
-                              LoginRepository().sendPhone(controllerNumber.text);
                             }
                           : null,
                     ),

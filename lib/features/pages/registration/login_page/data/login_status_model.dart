@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-LoginStatusDTO modelFromJson(String str) => LoginStatusDTO.fromJson(json.decode(str));
+LoginStatusModel modelFromJson(String str) => LoginStatusModel.fromJson(json.decode(str));
 
-String modelToJson(LoginStatusDTO data) => json.encode(data.toJson());
+String modelToJson(LoginStatusModel data) => json.encode(data.toJson());
 
-class LoginStatusDTO {
+class LoginStatusModel {
   final String? status;
   final String? message;
 
-  LoginStatusDTO({
+  LoginStatusModel({
     this.status,
     this.message,
   });
 
-  factory LoginStatusDTO.fromJson(Map<String, dynamic> json) => LoginStatusDTO(
+  factory LoginStatusModel.fromJson(Map<String, dynamic> json) => LoginStatusModel(
         status: json["status"],
         message: json["message"],
       );

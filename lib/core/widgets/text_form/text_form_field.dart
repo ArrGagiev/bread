@@ -1,5 +1,6 @@
-import 'package:bread/core/constants/app_colors.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:bread/core/constants/app_typography.dart';
+import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -48,10 +49,11 @@ class _AppTextFormState extends State<AppTextForm> {
     if (value != null) {
       switch (widget.type) {
         case ValidationType.number:
-          if (!RegExp(r"^\+?\d{10,13}$").hasMatch(value)) {
+          final unmaskedText = maskFormatter.unmaskText(value);
+          if (!RegExp(r"^\+?\d{10,13}$").hasMatch(unmaskedText)) {
             _showErrorIcon = true;
             _isValid = false;
-            widget.onValidation!(_isValid); //!
+            widget.onValidation!(_isValid);
             return 'Некорректный номер телефона';
           }
           break;
@@ -61,7 +63,7 @@ class _AppTextFormState extends State<AppTextForm> {
               .hasMatch(value)) {
             _showErrorIcon = true;
             _isValid = false;
-            widget.onValidation!(_isValid); //!
+            widget.onValidation!(_isValid);
             return 'Некорректный email';
           }
           break;
@@ -69,7 +71,7 @@ class _AppTextFormState extends State<AppTextForm> {
           if (value.length < 3) {
             _showErrorIcon = true;
             _isValid = false;
-            widget.onValidation!(_isValid); //!
+            widget.onValidation!(_isValid);
             return 'Введите не менее 3 символов';
           }
           break;
@@ -77,8 +79,8 @@ class _AppTextFormState extends State<AppTextForm> {
           return null;
       }
     }
-    _showErrorIcon = false; // Сбросить флаг ошибки
-    widget.onValidation!(_isValid = true); //!
+    _showErrorIcon = false;
+    widget.onValidation!(_isValid = true);
     return null;
   }
 
@@ -87,13 +89,14 @@ class _AppTextFormState extends State<AppTextForm> {
     return Form(
       key: _formKey,
       child: TextFormField(
+        inputFormatters: ValidationType.number == widget.type ? [maskFormatter] : [],
         controller: widget.controller,
         maxLines: widget.maxLines,
 
         onTapOutside: (PointerDownEvent event) {
           FocusManager.instance.primaryFocus?.unfocus();
         },
-        // активный текст
+        // вводимый текст
         style: AppTypography.bodyLarge, //todo: меняется вместе с темой <---
         decoration: inputDecoration.copyWith(
           labelText: widget.labelText,
@@ -105,14 +108,8 @@ class _AppTextFormState extends State<AppTextForm> {
               : null,
         ),
         //----------------------------------------------------------------------
-        //----------------------------------------------------------------------
         validator: _validateInput,
-        onChanged: (text) {
-          setState(() {
-            _onSubmit();
-          });
-        },
-        //----------------------------------------------------------------------
+        onChanged: (text) => setState(() => _onSubmit()),
         //----------------------------------------------------------------------
       ),
     );
@@ -142,4 +139,10 @@ final inputDecoration = InputDecoration(
   // ------------------------------------------------------------------------------
   errorStyle: AppTypography.bodySmall.copyWith(color: AppColors.red),
   suffixIconConstraints: const BoxConstraints(minWidth: 20, minHeight: 20),
+);
+
+var maskFormatter = MaskTextInputFormatter(
+  mask: '+7 ### ### ## ##',
+  filter: {"#": RegExp(r'[0-9]')},
+  type: MaskAutoCompletionType.lazy,
 );
