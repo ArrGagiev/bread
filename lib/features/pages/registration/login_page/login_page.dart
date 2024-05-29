@@ -1,5 +1,5 @@
+import 'package:bread/features/pages/registration/login_page/ui/widgets/login_card_content.dart';
 import 'package:bread/features/pages/registration/login_page/ui/widgets/terms_of_service.dart';
-import 'package:bread/features/pages/registration/login_page/ui/widgets/input_column.dart';
 import 'package:bread/features/pages/registration/verify_code_page/verify_code_page.dart';
 import 'package:bread/features/pages/registration/login_page/ui/widgets/login_card.dart';
 import 'package:bread/features/pages/registration/login_page/ui/bloc/login_bloc.dart';
@@ -28,20 +28,20 @@ class _LoginPageState extends State<LoginPage> {
             body: CustomScrollView(
               slivers: [
                 const SliverToBoxAdapter(child: SizedBox(height: 100)),
-                //todo: ---------------------------------------------------------------- логотип
+                //---------------------------------------------------------------------- логотип
                 SliverToBoxAdapter(child: SvgPicture.asset('assets/icons/logo.svg', width: 200)),
                 const SliverToBoxAdapter(child: SizedBox(height: 40)),
-                //todo: ------------------------------------------------------- контент страницы
+                //------------------------------------------------------------- контент страницы
                 const SliverToBoxAdapter(child: LoginCard(child: LoginCardContent())),
                 const SliverToBoxAdapter(child: SizedBox(height: 82)),
-                //todo: --------------------------------------------------- условия обслуживания
+                //--------------------------------------------------------- условия обслуживания
                 const SliverToBoxAdapter(child: TermsOfService()),
                 const SliverToBoxAdapter(child: SizedBox(height: 100)),
               ],
             ),
           );
         },
-        //todo: =================================================================> bloc listener
+        // bloc listener
         listener: (BuildContext context, LoginState state) {
           if (state is SuccessState) {
             log('state is SendingPhoneSuccess');
@@ -50,10 +50,7 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(builder: (context) => const VerifyCodePage()),
             );
           }
-          if (state is ErrorState) {
-            //todo: показать всплывашку с ошибкой
-            log(state.error);
-          }
+          if (state is ErrorState) log(state.error); //todo: показать всплывашку с ошибкой
         },
       ),
     );

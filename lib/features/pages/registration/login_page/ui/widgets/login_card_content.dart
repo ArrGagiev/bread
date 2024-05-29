@@ -26,6 +26,7 @@ class _LoginCardContentState extends State<LoginCardContent> {
 
   @override
   Widget build(BuildContext context) {
+    var loginBloc = context.read<LoginBloc>();
     return StreamBuilder<LoginState>(
       stream: context.read<LoginBloc>().stream,
       builder: (context, snapshot) {
@@ -55,11 +56,7 @@ class _LoginCardContentState extends State<LoginCardContent> {
                 : PrimaryButton(
                     title: 'Получить код',
                     onPressed: isValidNumber
-                        ? () {
-                            context
-                                .read<LoginBloc>()
-                                .add(SendingPhoneNumber(number: controllerNumber.text));
-                          }
+                        ? () => loginBloc.add(SendingPhoneNumber(number: controllerNumber.text))
                         : null,
                   ),
           ],
