@@ -89,7 +89,8 @@ class _AppTextFormState extends State<AppTextForm> {
     return Form(
       key: _formKey,
       child: TextFormField(
-        inputFormatters: ValidationType.number == widget.type ? [maskFormatter] : [],
+        inputFormatters:
+            ValidationType.number == widget.type ? [maskFormatter] : null,
         controller: widget.controller,
         maxLines: widget.maxLines,
 
@@ -109,7 +110,9 @@ class _AppTextFormState extends State<AppTextForm> {
         ),
         //----------------------------------------------------------------------
         validator: _validateInput,
-        onChanged: (text) => setState(() => _onSubmit()),
+        onChanged: (text) => setState(() {
+          _onSubmit();
+        }),
         //----------------------------------------------------------------------
       ),
     );
