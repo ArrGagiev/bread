@@ -1,9 +1,8 @@
-import 'dart:convert';
-import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'dart:developer';
+import 'dart:convert';
 
-/// Класс для логирования.
-/// Todo Надо доработать. Добавить автоматическое добавление к запросам заголовков и перезапрос токена
+// Класс для логирования.
 class LoggingInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
@@ -23,19 +22,19 @@ class LoggingInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     log("""REQUEST:
-${cURLRepresentation(options)}
-""");
+           ${cURLRepresentation(options)}
+           """);
     return super.onRequest(options, handler);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     log("""RESPONSE:
-URL: ${response.requestOptions.uri}
-Method: ${response.requestOptions.method}
-Headers: ${json.encode(response.requestOptions.headers)}
-Data: ${json.encode(response.data)}
-""");
+           URL: ${response.requestOptions.uri}
+           Method: ${response.requestOptions.method}
+           Headers: ${json.encode(response.requestOptions.headers)}
+           Data: ${json.encode(response.data)}
+           """);
     return super.onResponse(response, handler);
   }
 
@@ -52,7 +51,6 @@ Data: ${json.encode(response.data)}
     });
 
     var data = options.data;
-    //  data = data.replaceAll('\"', '\\\"');
     components.add("-d \"$data\"");
 
     components.add("\"${options.uri.toString()}\"");
