@@ -3,9 +3,9 @@ import 'package:bread/features/pages/registration/login_page/ui/widgets/terms_of
 import 'package:bread/features/pages/registration/verify_code_page/verify_code_page.dart';
 import 'package:bread/features/pages/registration/login_page/ui/widgets/login_card.dart';
 import 'package:bread/features/pages/registration/login_page/ui/bloc/login_bloc.dart';
+import 'package:bread/features/pages/registration/login_page/ui/widgets/logo.dart';
 import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
@@ -23,21 +23,27 @@ class _LoginPageState extends State<LoginPage> {
       create: (context) => LoginBloc(),
       child: BlocConsumer<LoginBloc, LoginState>(
         builder: (context, state) {
-          return Scaffold(
-            backgroundColor: AppColors.beige,
-            body: CustomScrollView(
-              slivers: [
-                const SliverToBoxAdapter(child: SizedBox(height: 100)),
-                //---------------------------------------------------------------------- логотип
-                SliverToBoxAdapter(child: SvgPicture.asset('assets/icons/logo.svg', width: 200)),
-                const SliverToBoxAdapter(child: SizedBox(height: 40)),
-                //------------------------------------------------------------- контент страницы
-                const SliverToBoxAdapter(child: LoginCard(child: LoginCardContent())),
-                const SliverToBoxAdapter(child: SizedBox(height: 82)),
-                //--------------------------------------------------------- условия обслуживания
-                const SliverToBoxAdapter(child: TermsOfService()),
-                const SliverToBoxAdapter(child: SizedBox(height: 100)),
-              ],
+          return const SafeArea(
+            child: Scaffold(
+              backgroundColor: AppColors.beige,
+              body: CustomScrollView(
+                slivers: [
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 53),
+                        Logo(),
+                        SizedBox(height: 40),
+                        LoginCard(child: LoginCardContent()),
+                        Spacer(),
+                        TermsOfService(),
+                        SizedBox(height: 31),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
