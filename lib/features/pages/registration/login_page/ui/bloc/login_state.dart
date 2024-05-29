@@ -9,4 +9,7 @@ final class LoadingState extends LoginState {}
 
 final class SuccessState extends LoginState {}
 
-final class ErrorState extends LoginState {}
+final class ErrorState extends LoginState {
+  ErrorState({required this.error});
+  final String error;
+}

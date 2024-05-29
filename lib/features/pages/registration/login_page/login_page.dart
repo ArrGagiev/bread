@@ -76,9 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                             title: 'Отправить',
                             onPressed: isValidNumber
                                 ? () {
-                                    context.read<LoginBloc>().add(
-                                        SendingPhoneNumber(
-                                            number: controllerNumber.text));
+                                    context
+                                        .read<LoginBloc>()
+                                        .add(SendingPhoneNumber(number: controllerNumber.text));
                                   }
                                 : null,
                           ),
@@ -96,6 +96,10 @@ class _LoginPageState extends State<LoginPage> {
               context,
               MaterialPageRoute(builder: (context) => const VerifyCodePage()),
             );
+          }
+
+          if (state is ErrorState) {
+            log('${state.error}');
           }
         },
       ),
