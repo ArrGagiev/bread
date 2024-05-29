@@ -1,8 +1,11 @@
+import 'package:bread/features/pages/registration/login_page/ui/widgets/terms_of_service.dart';
+import 'package:bread/features/pages/registration/login_page/ui/widgets/input_column.dart';
 import 'package:bread/features/pages/registration/verify_code_page/verify_code_page.dart';
+import 'package:bread/features/pages/registration/login_page/ui/widgets/login_card.dart';
 import 'package:bread/features/pages/registration/login_page/ui/bloc/login_bloc.dart';
-import 'package:bread/core/widgets/text_form/text_form_field.dart';
-import 'package:bread/core/widgets/buttons/primary_button.dart';
+import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
@@ -14,25 +17,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController controllerNumber = TextEditingController();
-  TextEditingController controllerEmail = TextEditingController();
-  bool isValidNumber = false;
-  bool isValidEmail = false;
-
-  bool _onValidationNumber(bool isValid) {
-    setState(() {
-      isValidNumber = isValid;
-    });
-    return isValidNumber;
-  }
-
-  bool _onValidationEmail(bool isValid) {
-    setState(() {
-      isValidEmail = isValid;
-    });
-    return isValidEmail;
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -40,55 +24,24 @@ class _LoginPageState extends State<LoginPage> {
       child: BlocConsumer<LoginBloc, LoginState>(
         builder: (context, state) {
           return Scaffold(
+            backgroundColor: AppColors.beige,
             body: CustomScrollView(
               slivers: [
                 const SliverToBoxAdapter(child: SizedBox(height: 100)),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: AppTextForm(
-                      controller: controllerNumber,
-                      type: ValidationType.number,
-                      labelText: 'Номер',
-                      onValidation: _onValidationNumber,
-                    ),
-                  ),
-                ),
-                const SliverToBoxAdapter(child: SizedBox(height: 20)),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: AppTextForm(
-                      controller: controllerEmail,
-                      type: ValidationType.email,
-                      labelText: 'Почта',
-                      onValidation: _onValidationEmail,
-                    ),
-                  ),
-                ),
-                const SliverToBoxAdapter(child: SizedBox(height: 20)),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: state is LoadingState
-                        ? const Center(child: CircularProgressIndicator())
-                        : PrimaryButton(
-                            title: 'Отправить',
-                            onPressed: isValidNumber
-                                ? () {
-                                    context
-                                        .read<LoginBloc>()
-                                        .add(SendingPhoneNumber(number: controllerNumber.text));
-                                  }
-                                : null,
-                          ),
-                  ),
-                ),
+                //todo: ---------------------------------------------------------------- логотип
+                SliverToBoxAdapter(child: SvgPicture.asset('assets/icons/logo.svg', width: 200)),
+                const SliverToBoxAdapter(child: SizedBox(height: 40)),
+                //todo: ------------------------------------------------------- контент страницы
+                const SliverToBoxAdapter(child: LoginCard(child: LoginCardContent())),
+                const SliverToBoxAdapter(child: SizedBox(height: 82)),
+                //todo: --------------------------------------------------- условия обслуживания
+                const SliverToBoxAdapter(child: TermsOfService()),
+                const SliverToBoxAdapter(child: SizedBox(height: 100)),
               ],
             ),
           );
         },
-        //todo: ===============================================> bloc listener
+        //todo: =================================================================> bloc listener
         listener: (BuildContext context, LoginState state) {
           if (state is SuccessState) {
             log('state is SendingPhoneSuccess');
@@ -97,9 +50,9 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(builder: (context) => const VerifyCodePage()),
             );
           }
-
           if (state is ErrorState) {
-            log('${state.error}');
+            //todo: показать всплывашку с ошибкой
+            log(state.error);
           }
         },
       ),

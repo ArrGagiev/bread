@@ -50,8 +50,15 @@ class PrimaryButton extends StatelessWidget {
             (Set<MaterialState> states) =>
                 states.contains(MaterialState.pressed) ? AppColors.orangeDark : null,
           ),
-          // настроил статичную тень кнопки
-          elevation: MaterialStateProperty.all(5),
+          // настроил тень кнопки
+          elevation: MaterialStateProperty.resolveWith<double?>(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.disabled)) {
+                return 0;
+              }
+              return 5;
+            },
+          ),
           // закругление кнопки
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

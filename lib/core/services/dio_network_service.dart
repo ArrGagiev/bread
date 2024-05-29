@@ -28,7 +28,7 @@ class DioNetworkService {
           status: e.response?.data['status'],
           messages: e.response?.data['messages']);
       if ((errorModel.message ?? '').isEmpty) {
-        errorModel.message = AppTexts.commonEror ?? e.message.toString();
+        errorModel.message = AppTexts.commonError ?? e.message.toString();
         errorModel.status = e.type.toString();
       }
       throw NetworkError(errorModel: errorModel);
@@ -50,7 +50,7 @@ class DioNetworkService {
           status: e.response?.data['status'],
           messages: e.response?.data['messages']);
       if ((errorModel.message ?? '').isEmpty) {
-        errorModel.message = AppTexts.commonEror ?? e.message.toString();
+        errorModel.message = AppTexts.commonError ?? e.message.toString();
         errorModel.status = e.type.toString();
       }
       throw NetworkError(errorModel: errorModel);

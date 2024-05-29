@@ -1,5 +1,5 @@
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:bread/core/constants/app_typography.dart';
+import 'package:bread/core/utils/mask_formatter.dart';
 import 'package:bread/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -39,17 +39,17 @@ class _AppTextFormState extends State<AppTextForm> {
     _formKey.currentState!.validate();
   }
 
-  @override
-  void dispose() {
-    widget.controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   widget.controller.dispose();
+  //   super.dispose();
+  // }
 
   String? _validateInput(String? value) {
     if (value != null) {
       switch (widget.type) {
         case ValidationType.number:
-          final unmaskedText = maskFormatter.unmaskText(value);
+          final unmaskedText = MaskFormatter.appMaskFormatter.unmaskText(value);
           if (!RegExp(r"^\+?\d{10,13}$").hasMatch(unmaskedText)) {
             _showErrorIcon = true;
             _isValid = false;
@@ -90,7 +90,7 @@ class _AppTextFormState extends State<AppTextForm> {
       key: _formKey,
       child: TextFormField(
         inputFormatters:
-            ValidationType.number == widget.type ? [maskFormatter] : null,
+            ValidationType.number == widget.type ? [MaskFormatter.appMaskFormatter] : null,
         controller: widget.controller,
         maxLines: widget.maxLines,
 
@@ -142,10 +142,4 @@ final inputDecoration = InputDecoration(
   // ------------------------------------------------------------------------------
   errorStyle: AppTypography.bodySmall.copyWith(color: AppColors.red),
   suffixIconConstraints: const BoxConstraints(minWidth: 20, minHeight: 20),
-);
-
-var maskFormatter = MaskTextInputFormatter(
-  mask: '+7 ### ### ## ##',
-  filter: {"#": RegExp(r'[0-9]')},
-  type: MaskAutoCompletionType.lazy,
 );

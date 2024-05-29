@@ -1,3 +1,3 @@
 class AppTexts {
-  static String? commonEror; // "Что-то пошло не так";
+  static String? commonError; // "Что-то пошло не так";
 }
