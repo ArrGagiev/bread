@@ -3,6 +3,7 @@ import 'package:bread/core/themes/extentions/bottom_navbar_theme.dart';
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/constants/app_colors.dart';
 import 'package:bread/core/themes/extentions/product_card_theme.dart';
+import 'package:bread/core/themes/extentions/registration_theme.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData darkTheme = ThemeData(
@@ -14,6 +15,7 @@ final ThemeData darkTheme = ThemeData(
     darkNavBarTheme,
     darkInfoNavCardTheme,
     darkProductCardTheme,
+    darkRegistrationTheme
   ],
 );
 
@@ -41,6 +43,12 @@ BottomNavBarTheme darkNavBarTheme = BottomNavBarTheme(
   shadowColor: AppColors.darkBottomShadow.withOpacity(0.5),
   activeIconColor: AppColors.orange,
   inactiveIconColor: AppColors.white,
+);
+
+RegistrationTheme darkRegistrationTheme = RegistrationTheme(
+  backgroundColor: AppColors.black,
+  bodyTextStyle: AppTypography.bodyLarge.copyWith(color: AppColors.gray),
+  descriptionTextStyle: AppTypography.bodyMedium.copyWith(color: AppColors.gray),
 );
 
 TextTheme darkTextTheme() {

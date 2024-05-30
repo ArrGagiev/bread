@@ -106,4 +106,11 @@ class AppTypography {
     fontWeight: FontWeight.w400,
     fontSize: 10,
   );
+
+  // --------------------------------------------------- codeNumber
+  static const TextStyle codeNumber = TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w400,
+    fontSize: 23,
+  );
 }
