@@ -47,8 +47,9 @@ BottomNavBarTheme lightNavBarTheme = BottomNavBarTheme(
 
 RegistrationTheme lightRegistrationTheme = RegistrationTheme(
   backgroundColor: AppColors.beige,
-  bodyTextStyle: AppTypography.bodyLarge.copyWith(color: AppColors.black),
-  descriptionTextStyle: AppTypography.bodyMedium.copyWith(color: AppColors.gray),
+  bodyLarge: AppTypography.bodyLarge.copyWith(color: AppColors.black),
+  bodyMedium: AppTypography.bodyMedium.copyWith(color: AppColors.gray),
+  bodySmall: AppTypography.bodySmall.copyWith(color: AppColors.gray),
 );
 
 TextTheme lightTextTheme() {

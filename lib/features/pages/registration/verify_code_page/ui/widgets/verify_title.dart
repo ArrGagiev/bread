@@ -20,7 +20,7 @@ class VerifyTitle extends StatelessWidget {
           const SizedBox(height: 13),
           Text(
             'Мы отправили код на номер \n${number}',
-            style: context.registrationTheme.bodyTextStyle,
+            style: context.registrationTheme.bodyLarge,
           ),
         ],
       ),

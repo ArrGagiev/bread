@@ -23,7 +23,7 @@ class CountdownTimer extends StatelessWidget {
         seconds: 5,
         build: (BuildContext context, double time) => Text(
           formatDuration(Duration(seconds: time.toInt())),
-          style: context.registrationTheme.descriptionTextStyle,
+          style: context.registrationTheme.bodyMedium,
         ),
         interval: const Duration(seconds: 1),
         // onFinished: () {},

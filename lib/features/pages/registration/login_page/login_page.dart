@@ -4,7 +4,7 @@ import 'package:bread/features/pages/registration/verify_code_page/verify_code_p
 import 'package:bread/features/pages/registration/login_page/ui/widgets/login_card.dart';
 import 'package:bread/features/pages/registration/login_page/ui/bloc/login_bloc.dart';
 import 'package:bread/features/pages/registration/login_page/ui/widgets/logo.dart';
-import 'package:bread/core/constants/app_colors.dart';
+import 'package:bread/core/themes/extentions/registration_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
@@ -23,10 +23,10 @@ class _LoginPageState extends State<LoginPage> {
       create: (context) => LoginBloc(),
       child: BlocConsumer<LoginBloc, LoginState>(
         builder: (context, state) {
-          return const SafeArea(
+          return SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.beige,
-              body: CustomScrollView(
+              backgroundColor: context.registrationTheme.backgroundColor,
+              body: const CustomScrollView(
                 slivers: [
                   SliverFillRemaining(
                     hasScrollBody: false,

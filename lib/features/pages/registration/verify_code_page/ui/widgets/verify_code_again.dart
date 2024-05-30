@@ -18,7 +18,7 @@ class VerifyCodeAgain extends StatelessWidget {
           children: [
             Text(
               'Получить СМС код можно через',
-              style: context.registrationTheme.descriptionTextStyle,
+              style: context.registrationTheme.bodyMedium,
             ),
             const SizedBox(width: 3),
             CountdownTimer(controller: countdownController),

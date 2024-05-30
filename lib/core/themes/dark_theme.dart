@@ -47,8 +47,9 @@ BottomNavBarTheme darkNavBarTheme = BottomNavBarTheme(
 
 RegistrationTheme darkRegistrationTheme = RegistrationTheme(
   backgroundColor: AppColors.black,
-  bodyTextStyle: AppTypography.bodyLarge.copyWith(color: AppColors.gray),
-  descriptionTextStyle: AppTypography.bodyMedium.copyWith(color: AppColors.gray),
+  bodyLarge: AppTypography.bodyLarge.copyWith(color: AppColors.gray),
+  bodyMedium: AppTypography.bodyMedium.copyWith(color: AppColors.gray),
+  bodySmall: AppTypography.bodySmall.copyWith(color: AppColors.lightGray.withOpacity(0.5)),
 );
 
 TextTheme darkTextTheme() {

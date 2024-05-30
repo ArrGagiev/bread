@@ -1,5 +1,6 @@
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:bread/core/constants/app_colors.dart';
+import 'package:bread/core/themes/extentions/registration_theme.dart';
 import 'package:bread/core/utils/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
@@ -18,7 +19,7 @@ class TermsOfService extends StatelessWidget {
             TextSpan(
               text:
                   'Используя это приложение, вы автоматически соглашаетесь на обработку персональных данных и принимаете условия Пользовательского соглашения',
-              style: AppTypography.bodySmall.copyWith(color: AppColors.darkGray),
+              style: context.registrationTheme.bodySmall,
             ),
             TextSpan(
               text: '\nПользовательское соглашение',

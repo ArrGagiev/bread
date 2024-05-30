@@ -2,25 +2,29 @@ import 'package:flutter/material.dart';
 
 class RegistrationTheme extends ThemeExtension<RegistrationTheme> {
   final Color backgroundColor;
-  final TextStyle descriptionTextStyle;
-  final TextStyle bodyTextStyle;
+  final TextStyle bodyMedium;
+  final TextStyle bodyLarge;
+  final TextStyle bodySmall;
 
   const RegistrationTheme({
     required this.backgroundColor,
-    required this.descriptionTextStyle,
-    required this.bodyTextStyle,
+    required this.bodyMedium,
+    required this.bodyLarge,
+    required this.bodySmall,
   });
 
   @override
   ThemeExtension<RegistrationTheme> copyWith({
     Color? backgroundColor,
-    TextStyle? descriptionTextStyle,
-    TextStyle? priceTextStyle,
+    TextStyle? bodyMedium,
+    TextStyle? bodyLarge,
+    TextStyle? bodySmall,
   }) {
     return RegistrationTheme(
       backgroundColor: backgroundColor ?? this.backgroundColor,
-      descriptionTextStyle: descriptionTextStyle ?? this.descriptionTextStyle,
-      bodyTextStyle: priceTextStyle ?? this.bodyTextStyle,
+      bodyMedium: bodyMedium ?? this.bodyMedium,
+      bodyLarge: bodyLarge ?? this.bodyLarge,
+      bodySmall: bodySmall ?? this.bodySmall,
     );
   }
 
@@ -32,8 +36,9 @@ class RegistrationTheme extends ThemeExtension<RegistrationTheme> {
     }
     return RegistrationTheme(
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
-      descriptionTextStyle: TextStyle.lerp(descriptionTextStyle, other.descriptionTextStyle, t)!,
-      bodyTextStyle: TextStyle.lerp(bodyTextStyle, other.bodyTextStyle, t)!,
+      bodyMedium: TextStyle.lerp(bodyMedium, other.bodyMedium, t)!,
+      bodyLarge: TextStyle.lerp(bodyLarge, other.bodyLarge, t)!,
+      bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t)!,
     );
   }
 }

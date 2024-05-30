@@ -71,12 +71,6 @@ class AppTypography {
     fontSize: 16,
   );
 
-  static const TextStyle bodyLargeCaption = TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400,
-    fontSize: 16,
-  );
-
   static const TextStyle bodyMedium = TextStyle(
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
