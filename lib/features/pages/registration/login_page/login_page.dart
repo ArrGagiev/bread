@@ -9,14 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -37,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(height: 40),
                         LoginCard(child: LoginCardContent()),
                         Spacer(),
+                        SizedBox(height: 10),
                         TermsOfService(),
                         SizedBox(height: 31),
                       ],
@@ -56,7 +52,8 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(builder: (context) => const VerifyCodePage()),
             );
           }
-          if (state is ErrorState) log(state.error); //todo: показать всплывашку с ошибкой
+          //todo: показать всплывашку с ошибкой
+          if (state is ErrorState) log('=====> ${state.error}');
         },
       ),
     );

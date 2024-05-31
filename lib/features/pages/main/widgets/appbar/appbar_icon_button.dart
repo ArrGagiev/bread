@@ -15,6 +15,7 @@ class AppBarIconButton extends StatelessWidget {
       child: Theme(
         data: Theme.of(context).copyWith(highlightColor: Colors.transparent),
         child: FloatingActionButton(
+          heroTag: null,
           elevation: 0,
           focusElevation: 0,
           highlightElevation: 0,

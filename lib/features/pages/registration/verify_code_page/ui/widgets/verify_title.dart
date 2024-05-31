@@ -2,9 +2,7 @@ import 'package:bread/core/themes/extentions/registration_theme.dart';
 import 'package:flutter/material.dart';
 
 class VerifyTitle extends StatelessWidget {
-  const VerifyTitle({super.key, required this.number});
-
-  final String number;
+  const VerifyTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class VerifyTitle extends StatelessWidget {
           ),
           const SizedBox(height: 13),
           Text(
-            'Мы отправили код на номер \n${number}',
+            'Мы отправили код на номер \n+7 902 782 14 16',
             style: context.registrationTheme.bodyLarge,
           ),
         ],

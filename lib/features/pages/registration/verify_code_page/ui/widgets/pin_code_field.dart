@@ -1,6 +1,8 @@
+import 'package:bread/features/pages/registration/verify_code_page/ui/bloc/verify_code_bloc.dart';
 import 'package:bread/core/constants/app_typography.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:bread/core/constants/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
@@ -10,24 +12,31 @@ class PinCodeField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      child: PinCodeTextField(
-        enableActiveFill: true,
-        cursorColor: AppColors.orange,
-        keyboardType: TextInputType.number,
-        controller: controller,
-        obscureText: false,
-        length: 6,
-        textStyle: AppTypography.codeNumber,
-        animationType: AnimationType.fade,
-        animationDuration: const Duration(milliseconds: 200),
-        onChanged: (value) {
-          log(value);
-        },
-        appContext: context,
-        pinTheme: _pinTheme,
-      ),
+    var verifyBloc = context.read<VerifyCodeBloc>();
+    return StreamBuilder<VerifyCodeState>(
+      stream: context.read<VerifyCodeBloc>().stream,
+      builder: (context, snapshot) {
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          child: PinCodeTextField(
+            enableActiveFill: true,
+            cursorColor: AppColors.orange,
+            keyboardType: TextInputType.number,
+            controller: controller,
+            obscureText: false,
+            length: 6,
+            textStyle: AppTypography.codeNumber,
+            animationType: AnimationType.fade,
+            animationDuration: const Duration(milliseconds: 200),
+            onCompleted: (value) {
+              log(value);
+              verifyBloc.add(VerifyCode(code: value));
+            },
+            appContext: context,
+            pinTheme: _pinTheme,
+          ),
+        );
+      },
     );
   }
 }

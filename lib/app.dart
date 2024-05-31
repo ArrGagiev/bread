@@ -12,11 +12,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: darkTheme, //todo: app theme <---
+      theme: lightTheme, //todo: app theme <---
       home: const Scaffold(
         // отключает поднятие навбара вверх, при открытии клавиатуры
         resizeToAvoidBottomInset: false,
-        body: VerifyCodePage(),
+        body: LoginPage(),
       ),
     );
   }

@@ -21,7 +21,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(LoadingState());
     try {
       final unmaskedText = maskFormatter.unmaskText(event.number);
-      await loginUsecase.call(phone: unmaskedText);
+      await loginUsecase.sendPhoneNumber(phone: unmaskedText);
+      await loginUsecase.savePhoneNumber(phone: unmaskedText);
       emit(SuccessState());
     } on NetworkError catch (networkError) {
       emit(ErrorState(error: AppTexts.commonError ?? networkError.errorModel.message ?? ''));
