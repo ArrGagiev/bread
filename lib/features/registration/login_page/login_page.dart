@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
         },
         // bloc listener
         listener: (BuildContext context, LoginState state) {
-          if (state is SuccessState) {
+          if (state is LoginSuccessState) {
             log('state is SendingPhoneSuccess');
             Navigator.push(
               context,
@@ -53,7 +53,7 @@ class LoginPage extends StatelessWidget {
             );
           }
           //todo: показать всплывашку с ошибкой
-          if (state is ErrorState) log('=====> ${state.error}');
+          if (state is LoginErrorState) log('=====> ${state.error}');
         },
       ),
     );

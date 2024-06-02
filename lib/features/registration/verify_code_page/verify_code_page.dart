@@ -45,7 +45,7 @@ class VerifyCodePage extends StatelessWidget {
         },
         // bloc listener
         listener: (BuildContext context, VerifyCodeState state) {
-          if (state is SuccessState) {
+          if (state is VerifyCodeSuccessState) {
             log('state is VerifyCodeSuccess');
             Navigator.push(
               context,
@@ -53,7 +53,7 @@ class VerifyCodePage extends StatelessWidget {
             );
           }
           //todo: показать всплывашку с ошибкой
-          if (state is ErrorState) log('=====> ${state.error}');
+          if (state is VerifyCodeErrorState) log('=====> ${state.error}');
         },
       ),
     );

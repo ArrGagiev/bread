@@ -28,7 +28,7 @@ class _LoginCardContentState extends State<LoginCardContent> {
   Widget build(BuildContext context) {
     var loginBloc = context.read<LoginBloc>();
     return StreamBuilder<LoginState>(
-      stream: context.read<LoginBloc>().stream,
+      stream: loginBloc.stream,
       builder: (context, snapshot) {
         return Column(
           children: [
@@ -51,14 +51,12 @@ class _LoginCardContentState extends State<LoginCardContent> {
               onValidation: _onValidationNumber,
             ),
             const SizedBox(height: 28),
-            snapshot is LoadingState
-                ? const Center(child: CircularProgressIndicator())
-                : PrimaryButton(
-                    title: 'Получить код',
-                    onPressed: isValidNumber
-                        ? () => loginBloc.add(SendingPhoneNumber(number: controllerNumber.text))
-                        : null,
-                  ),
+            PrimaryButton(
+              title: 'Получить код',
+              onPressed: isValidNumber
+                  ? () => loginBloc.add(SendingPhoneNumber(number: controllerNumber.text))
+                  : null,
+            ),
           ],
         );
       },

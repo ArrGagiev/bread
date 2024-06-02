@@ -11,19 +11,20 @@ class VerifyCodeBloc extends Bloc<VerifyCodeEvent, VerifyCodeState> {
   //--------------------------------------------------------- loginUsecase
   final VerifyCodeUseCase verifyCodeUsecase = VerifyCodeUseCase();
   //----------------------------------------------------------------------
-  VerifyCodeBloc() : super(InitialState()) {
+  VerifyCodeBloc() : super(VerifyCodeInitialState()) {
     on<VerifyCode>(_sendingCodeEvent);
   }
 
   _sendingCodeEvent(VerifyCode event, Emitter<VerifyCodeState> emit) async {
-    emit(LoadingState());
+    emit(VerifyCodeLoadingState());
     try {
       await verifyCodeUsecase.verifyCode(code: event.code);
-      emit(SuccessState());
+      emit(VerifyCodeSuccessState());
     } on NetworkError catch (networkError) {
-      emit(ErrorState(error: AppTexts.commonError ?? networkError.errorModel.message ?? ''));
+      emit(VerifyCodeErrorState(
+          error: AppTexts.commonError ?? networkError.errorModel.message ?? ''));
     } catch (unknownError) {
-      emit(ErrorState(error: AppTexts.commonError ?? unknownError.toString()));
+      emit(VerifyCodeErrorState(error: AppTexts.commonError ?? unknownError.toString()));
     }
   }
 }

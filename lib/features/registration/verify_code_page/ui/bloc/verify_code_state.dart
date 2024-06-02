@@ -3,13 +3,13 @@ part of 'verify_code_bloc.dart';
 @immutable
 sealed class VerifyCodeState {}
 
-final class InitialState extends VerifyCodeState {}
+final class VerifyCodeInitialState extends VerifyCodeState {}
 
-final class LoadingState extends VerifyCodeState {}
+final class VerifyCodeLoadingState extends VerifyCodeState {}
 
-final class SuccessState extends VerifyCodeState {}
+final class VerifyCodeSuccessState extends VerifyCodeState {}
 
-final class ErrorState extends VerifyCodeState {
-  ErrorState({required this.error});
+final class VerifyCodeErrorState extends VerifyCodeState {
+  VerifyCodeErrorState({required this.error});
   final String error;
 }

@@ -93,7 +93,7 @@ class _AppTextFormState extends State<AppTextForm> {
             ValidationType.number == widget.type ? [MaskFormatter.appMaskFormatter] : null,
         controller: widget.controller,
         maxLines: widget.maxLines,
-
+        keyboardType: ValidationType.number == widget.type ? TextInputType.number : null,
         onTapOutside: (PointerDownEvent event) {
           FocusManager.instance.primaryFocus?.unfocus();
         },

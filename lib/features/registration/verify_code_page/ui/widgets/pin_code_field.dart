@@ -14,27 +14,29 @@ class PinCodeField extends StatelessWidget {
     TextEditingController controller = TextEditingController();
     var verifyBloc = context.read<VerifyCodeBloc>();
     return StreamBuilder<VerifyCodeState>(
-      stream: context.read<VerifyCodeBloc>().stream,
+      stream: verifyBloc.stream,
       builder: (context, snapshot) {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: PinCodeTextField(
-            enableActiveFill: true,
-            cursorColor: AppColors.orange,
-            keyboardType: TextInputType.number,
-            controller: controller,
-            obscureText: false,
-            length: 6,
-            textStyle: AppTypography.codeNumber,
-            animationType: AnimationType.fade,
-            animationDuration: const Duration(milliseconds: 200),
-            onCompleted: (value) {
-              log(value);
-              verifyBloc.add(VerifyCode(code: value));
-            },
-            appContext: context,
-            pinTheme: _pinTheme,
-          ),
+          child: snapshot is VerifyCodeLoadingState
+              ? const Center(child: CircularProgressIndicator())
+              : PinCodeTextField(
+                  enableActiveFill: true,
+                  cursorColor: AppColors.orange,
+                  keyboardType: TextInputType.number,
+                  controller: controller,
+                  obscureText: false,
+                  length: 6,
+                  textStyle: AppTypography.codeNumber,
+                  animationType: AnimationType.fade,
+                  animationDuration: const Duration(milliseconds: 200),
+                  onCompleted: (value) {
+                    log(value);
+                    verifyBloc.add(VerifyCode(code: value));
+                  },
+                  appContext: context,
+                  pinTheme: _pinTheme,
+                ),
         );
       },
     );

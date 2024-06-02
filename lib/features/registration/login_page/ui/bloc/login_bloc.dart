@@ -12,22 +12,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   //--------------------------------------------------------- loginUsecase
   final LoginUseCase loginUsecase = LoginUseCase();
   //----------------------------------------------------------------------
-  LoginBloc() : super(InitialState()) {
+  LoginBloc() : super(LoginInitialState()) {
     on<SendingPhoneNumber>(_sendingPhoneEvent);
   }
 
   Future _sendingPhoneEvent(SendingPhoneNumber event, Emitter<LoginState> emit) async {
     var maskFormatter = MaskFormatter.appMaskFormatter;
-    emit(LoadingState());
+    emit(LoginLoadingState());
     try {
       final unmaskedText = maskFormatter.unmaskText(event.number);
       await loginUsecase.sendPhoneNumber(phone: unmaskedText);
       await loginUsecase.savePhoneNumber(phone: unmaskedText);
-      emit(SuccessState());
+      emit(LoginSuccessState());
     } on NetworkError catch (networkError) {
-      emit(ErrorState(error: AppTexts.commonError ?? networkError.errorModel.message ?? ''));
+      emit(LoginErrorState(error: AppTexts.commonError ?? networkError.errorModel.message ?? ''));
     } catch (unknownError) {
-      emit(ErrorState(error: AppTexts.commonError ?? unknownError.toString()));
+      emit(LoginErrorState(error: AppTexts.commonError ?? unknownError.toString()));
     }
   }
 }
