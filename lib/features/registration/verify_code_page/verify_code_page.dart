@@ -1,6 +1,7 @@
 import 'package:bread/features/registration/verify_code_page/ui/bloc/verify_code_bloc.dart';
+import 'package:bread/core/widgets/error_snack_bar/error_snack_bar.dart';
+import 'package:bread/core/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:bread/core/themes/extentions/registration_theme.dart';
-import 'package:bread/core/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'ui/widgets/verify_code_again.dart';
 import 'ui/widgets/pin_code_field.dart';
@@ -20,21 +21,23 @@ class VerifyCodePage extends StatelessWidget {
           return SafeArea(
             child: Scaffold(
               backgroundColor: context.registrationTheme.backgroundColor,
-              body: const CustomScrollView(
+              body: CustomScrollView(
                 slivers: [
                   SliverFillRemaining(
                     hasScrollBody: false,
                     child: Column(
                       children: [
-                        SizedBox(height: 148),
-                        Align(
+                        const SizedBox(height: 148),
+                        const Align(
                           alignment: Alignment.centerLeft,
                           child: VerifyTitle(),
                         ),
-                        SizedBox(height: 34),
-                        PinCodeField(),
-                        SizedBox(height: 22),
-                        VerifyCodeAgain(),
+                        const SizedBox(height: 34),
+                        state is VerifyCodeLoadingState
+                            ? const CircularProgressIndicator()
+                            : const PinCodeField(),
+                        const SizedBox(height: 22),
+                        const VerifyCodeAgain(),
                       ],
                     ),
                   )
@@ -53,7 +56,9 @@ class VerifyCodePage extends StatelessWidget {
             );
           }
           //todo: показать всплывашку с ошибкой
-          if (state is VerifyCodeErrorState) log('=====> ${state.error}');
+          if (state is VerifyCodeErrorState) {
+            ErrorSnackBar.showMessage(context, message: state.error);
+          }
         },
       ),
     );

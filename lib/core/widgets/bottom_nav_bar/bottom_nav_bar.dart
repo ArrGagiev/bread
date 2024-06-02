@@ -1,11 +1,11 @@
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:bread/core/themes/extentions/bottom_navbar_theme.dart';
 import 'package:bread/features/favourite/favourite_page.dart';
 import 'package:bread/features/profile/profile_page.dart';
 import 'package:bread/features/catalog/catalog_page.dart';
-import 'package:bread/features/basket/basket_page.dart';
 import 'package:bread/core/constants/app_typography.dart';
+import 'package:bread/features/basket/basket_page.dart';
 import 'package:bread/features/main/main_page.dart';
-import 'package:bread/core/themes/extentions/bottom_navbar_theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 

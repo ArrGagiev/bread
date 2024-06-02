@@ -1,5 +1,5 @@
+import 'package:bread/core/services/logging_interceptor.dart';
 import 'package:bread/core/constants/app_texts.dart';
-import 'package:bread/core/services/interceptor.dart';
 import 'package:bread/core/utils/network_error.dart';
 import 'package:dio/dio.dart';
 
@@ -23,10 +23,11 @@ class DioNetworkService {
       response = await dio.get(endpoint);
     } on DioException catch (e) {
       ErrorModel errorModel = ErrorModel(
-          statusCode: e.response?.statusCode,
-          message: e.response?.data['message'],
-          status: e.response?.data['status'],
-          messages: e.response?.data['messages']);
+        statusCode: e.response?.statusCode,
+        message: e.response?.data['message'],
+        status: e.response?.data['status'],
+        messages: e.response?.data['messages'],
+      );
       if ((errorModel.message ?? '').isEmpty) {
         errorModel.message = AppTexts.commonError ?? e.message.toString();
         errorModel.status = e.type.toString();
@@ -45,10 +46,11 @@ class DioNetworkService {
       response = await dio.post(endpoint, data: data);
     } on DioException catch (e) {
       ErrorModel errorModel = ErrorModel(
-          statusCode: e.response?.statusCode,
-          message: e.response?.data['message'],
-          status: e.response?.data['status'],
-          messages: e.response?.data['messages']);
+        statusCode: e.response?.statusCode,
+        message: e.response?.data['message'],
+        status: e.response?.data['status'],
+        messages: e.response?.data['messages'],
+      );
       if ((errorModel.message ?? '').isEmpty) {
         errorModel.message = AppTexts.commonError ?? e.message.toString();
         errorModel.status = e.type.toString();

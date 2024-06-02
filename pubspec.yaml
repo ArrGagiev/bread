@@ -34,6 +34,7 @@ dependencies:
   # Подключаемые пакеты приложения:
   persistent_bottom_nav_bar_v2: ^5.2.3
   mask_text_input_formatter: ^2.9.0
+  top_snackbar_flutter: ^3.1.0
   shared_preferences: ^2.2.3
   timer_count_down: ^2.2.0
   cupertino_icons: ^1.0.6
@@ -42,6 +43,7 @@ dependencies:
   dotted_border: ^2.1.0
   flutter_bloc: ^8.1.1
   url_launcher: ^6.2.6
+  go_router: ^13.2.0
   provider: ^6.1.2
   badges: ^3.1.2
   meta: ^1.11.0
