@@ -4,6 +4,7 @@ import 'package:bread/features/registration/verify_code_page/verify_code_page.da
 import 'package:bread/features/registration/login_page/ui/widgets/login_card.dart';
 import 'package:bread/features/registration/login_page/ui/bloc/login_bloc.dart';
 import 'package:bread/features/registration/login_page/ui/widgets/logo.dart';
+import 'package:bread/core/widgets/error_snack_bar/error_snack_bar.dart';
 import 'package:bread/core/themes/extentions/registration_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +53,10 @@ class LoginPage extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const VerifyCodePage()),
             );
           }
-          //todo: показать всплывашку с ошибкой
-          if (state is LoginErrorState) log('=====> ${state.error}');
+          //! Error State Message
+          if (state is LoginErrorState) {
+            ErrorSnackBar.showMessage(context, message: state.error);
+          }
         },
       ),
     );

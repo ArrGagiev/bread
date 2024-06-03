@@ -55,7 +55,7 @@ class VerifyCodePage extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const BottomNavBar()),
             );
           }
-          //todo: показать всплывашку с ошибкой
+          //! Error State Message
           if (state is VerifyCodeErrorState) {
             ErrorSnackBar.showMessage(context, message: state.error);
           }
